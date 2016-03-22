@@ -1,4 +1,4 @@
-#usr/bin/python
+#!/usr/bin/python2.7
 #-*- encoding: utf-8 -*-
 # @author: Florian Niefind
 # @contact: nifflor@googlemail.com
@@ -11,7 +11,7 @@ class MeetingRoom():
     Meeting room object
     """
     
-    def __init__(self, room_uid, day):
+    def __init__(self, room_uid, day = datetime.today()):
         """
         Initializes three corresponding lists, one with timestamps in 15 minute
         intervals, one with bools for availability and 1 with strings for 

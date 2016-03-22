@@ -1,4 +1,4 @@
-#usr/bin/python
+#!/usr/bin/python2.7
 #-*- encoding: utf-8 -*-
 # @author: Florian Niefind
 # @contact: nifflor@googlemail.com
@@ -10,8 +10,8 @@ from Read_Input import parse_input
 if __name__ == '__main__':
     
     #create meeting rooms
-    M1 = MeetingRoom(1, datetime.today())
-    M2 = MeetingRoom(2, datetime.today())
+    M1 = MeetingRoom(1)
+    M2 = MeetingRoom(2)
 
     #read all meetings
     all_meetings = parse_input('Test_Input.txt')
@@ -28,6 +28,10 @@ if __name__ == '__main__':
             events_M2.append(all_meetings_sorted[meeting_ix])
         else:
             events_M1.append(all_meetings_sorted[meeting_ix])
+
+    #assert that event fit into timeslots
+    assert((sum([x[1] for x in events_M1])/15) < sum(M1.available))
+    assert((sum([x[1] for x in events_M2])/15) < sum(M2.available))
 
     #fill the events
     for event in events_M1:
